@@ -1,0 +1,16 @@
+<%
+var data = jsonData;
+%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><%= jsonData.pageTitle %> | stg</title>
+<meta name="description" content="stgの<%= jsonData.pageDiscription %>">
+<style type="text/css">
+<%- include('../css/index.css') %>
+</style>
+</head>
+<body>
+<%- include('../../_src/parts_ejs/pc.ejs') %>
+</body>
+</html>

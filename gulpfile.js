@@ -1,6 +1,7 @@
 var fs = require('fs');
 var gulp = require('gulp');
-var connect = require('gulp-connect');
+var concat = require('gulp-concat');
+var browserSync = require('browser-sync');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var autoprefixer =require('gulp-autoprefixer');
@@ -8,16 +9,18 @@ var ejs = require("gulp-ejs");
 
 var jsonData = require('./_src/json/index.json');
 
-gulp.task('connect', function() {
-  connect.server({
-    root: './',
-    livereload: true
-  });
+// ローカルサーバーに関するタスク
+gulp.task('browser-sync', function() {
+    browserSync({
+        server: {
+            baseDir: "./"
+        }
+    });
 });
 
-gulp.task('reload', function () {
-  gulp.src(['./_src/parts_ejs/*.ejs','./_src/scss/*.scss'])
-    .pipe(connect.reload());
+// 自動でローカルサーバーをリロードするタスク
+gulp.task('bs-reload', function () {
+    browserSync.reload();
 });
 
 // cssに関するタスク
@@ -29,34 +32,50 @@ gulp.task('build-css', function () {
 		browsers: ["last 2 versions"],
 		cascade: false
 	}))
-	.pipe(gulp.dest('./base_failes/css'));
+	.pipe(gulp.dest('./base_files/css'));
 });
 
 // mockに関するタスク
-gulp.task('build-mock', function(){
-	return gulp.src('./base_failes/template_ejs/template_mock.ejs')
+gulp.task('build-mock-pc', function(){
+	return gulp.src('./base_files/template_ejs/template_mock_pc.ejs')
 	.pipe(ejs({
 		jsonData: jsonData //jsonData に data.json を取り込む
 	}))
-	.pipe(rename("index.html"))
-	.pipe(gulp.dest('./_view/mock'));
+	.pipe(rename("pc.html"))
+	.pipe(gulp.dest('./_upload_files/mock'));
+});
+gulp.task('build-mock-sp', function(){
+	return gulp.src('./base_files/template_ejs/template_mock_sp.ejs')
+	.pipe(ejs({
+		jsonData: jsonData //jsonData に data.json を取り込む
+	}))
+	.pipe(rename("sp.html"))
+	.pipe(gulp.dest('./_upload_files/mock'));
 });
 
 // stgに関するタスク
-gulp.task('build-stg', function(){
-	return gulp.src('./base_failes/template_ejs/template_stg.ejs')
+gulp.task('build-stg-pc', function(){
+	return gulp.src('./base_files/template_ejs/template_stg_pc.ejs')
 	.pipe(ejs({
 		jsonData: jsonData //jsonData に data.json を取り込む
 	}))
-	.pipe(rename("index.html"))
-	.pipe(gulp.dest('./_view/stg'));
+	.pipe(rename("pc.html"))
+	.pipe(gulp.dest('./_upload_files/stg'));
+});
+gulp.task('build-stg-sp', function(){
+	return gulp.src('./base_files/template_ejs/template_stg_sp.ejs')
+	.pipe(ejs({
+		jsonData: jsonData //jsonData に data.json を取り込む
+	}))
+	.pipe(rename("sp.html"))
+	.pipe(gulp.dest('./_upload_files/stg'));
 });
 
 // ファイルの変更を監視
 gulp.task('watch', function() {
-	gulp.watch(['./_src/scss/*.scss','./base_failes/css/*.css'], ['build-css','build-mock','build-stg','reload'])
-	gulp.watch(['./_src/parts_ejs/*.ejs'], ['build-mock','build-stg','reload'])
+	gulp.watch(['./_src/scss/*.scss','./base_files/css/*.css'], ['build-css','build-mock-pc','build-mock-sp','build-stg-pc','build-stg-sp','bs-reload'])
+	gulp.watch(['./_src/parts_ejs/*.ejs'], ['build-mock-pc','build-mock-sp','build-stg-pc','build-stg-sp','bs-reload'])
 });
 
 // デフォルトタスク
-gulp.task('default', ['connect','build-css','build-mock','build-stg','watch']);
+gulp.task('default', ['build-css','build-mock-pc','build-mock-sp','build-stg-pc','build-stg-sp','watch','browser-sync']);
