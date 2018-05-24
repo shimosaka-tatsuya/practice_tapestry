@@ -1,0 +1,16 @@
+<%
+var data = jsonData;
+%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><%= jsonData.pageTitle %> | mock</title>
+<meta name="description" content="mockの<%= jsonData.pageDiscription %>">
+<style type="text/css">
+<%- include('../css/index.css') %>
+</style>
+</head>
+<body>
+<%- include('../../_src/parts_ejs/sp.ejs') %>
+</body>
+</html>
