@@ -1,13 +1,12 @@
 var fs = require('fs');
 var gulp = require('gulp');
-var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var autoprefixer =require('gulp-autoprefixer');
 var ejs = require("gulp-ejs");
 
-var jsonData = require('./_development_environment/json/index.json');
+var jsonData = require('./_dev_files/json/index.json');
 
 // ローカルサーバーに関するタスク
 gulp.task('browser-sync', function() {
@@ -25,7 +24,7 @@ gulp.task('bs-reload', function () {
 
 // cssに関するタスク
 gulp.task('build-css', function () {
-	gulp.src('./_development_environment/scss/*.scss')
+	gulp.src('./_dev_files/scss/*.scss')
 	.pipe(sass({outputStyle: 'nested'}))
 	.pipe(rename({extname: '.css'}))
 	.pipe(autoprefixer({  //autoprefixerの実行
@@ -73,8 +72,8 @@ gulp.task('build-stg-sp', function(){
 
 // ファイルの変更を監視
 gulp.task('watch', function() {
-	gulp.watch(['./_development_environment/scss/*.scss','./base_files/css/*.css'], ['build-css','build-mock-pc','build-mock-sp','build-stg-pc','build-stg-sp','bs-reload'])
-	gulp.watch(['./_development_environment/parts_ejs/*.ejs'], ['build-mock-pc','build-mock-sp','build-stg-pc','build-stg-sp','bs-reload'])
+	gulp.watch(['./_dev_files/scss/*.scss','./base_files/css/*.css'], ['build-css','build-mock-pc','build-mock-sp','build-stg-pc','build-stg-sp','bs-reload'])
+	gulp.watch(['./_dev_files/parts_ejs/*.ejs'], ['build-mock-pc','build-mock-sp','build-stg-pc','build-stg-sp','bs-reload'])
 });
 
 // デフォルトタスク
