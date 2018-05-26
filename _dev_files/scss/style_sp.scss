@@ -1,0 +1,9 @@
+.bx-text {
+	display: flex;
+	font-size: 40px;
+	font-weight: bold;
+	
+	&:hover {
+		opacity: .5;
+	}
+}
