@@ -1,5 +1,5 @@
 <%
-var data = jsonData;
+var data = meta;
 var fileKind = fileKind;
 %>
 <% if (fileKind === 'view'){ %><%- include('../../base_files/parts_view/top.ejs') %><% } else if (fileKind === 'mock'){ %>mockのtop<% } else if (fileKind === 'stg'){ %>stgのtop<% } %>
