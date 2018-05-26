@@ -1,5 +1,8 @@
 {
 	"pageTitle": "テストのタイトル",
-	"pageDiscription": "テストのディスクリプション"
-	
+	"pageDiscription": "テストのディスクリプション",
+	"ogTitle": "テストのタイトル",
+	"pageUrl": "テストのURL",
+	"ogImage": "テストのOGP画像",
+	"ogDiscription": "テストのOGディスクリプション"
 }
