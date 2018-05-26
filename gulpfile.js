@@ -9,7 +9,7 @@ var merge = require('merge-stream');
 
 var jsonData = require('./_dev_files/json/index.json');
 
-// viewに関するタスク
+// htmlに関するタスク
 gulp.task('build-html', function(){
 	var buildView = gulp.src('./_dev_files/parts_ejs/*.ejs')
 	.pipe(ejs({
