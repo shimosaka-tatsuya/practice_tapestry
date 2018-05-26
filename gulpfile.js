@@ -9,61 +9,34 @@ var merge = require('merge-stream');
 
 var jsonData = require('./_dev_files/json/index.json');
 
-// mockに関するタスク
-gulp.task('build-mock', function(){
-	var buildMockPc =  gulp.src('./base_files/template_ejs/template_mock_pc.ejs')
-	.pipe(ejs({
-		jsonData: jsonData //jsonData に data.json を取り込む
-	}))
-	.pipe(rename("pc.html"))
-	.pipe(gulp.dest('./_upload_files/mock'));
-	
-	var buildMockSp =  gulp.src('./base_files/template_ejs/template_mock_sp.ejs')
-	.pipe(ejs({
-		jsonData: jsonData //jsonData に data.json を取り込む
-	}))
-	.pipe(rename("sp.html"))
-	.pipe(gulp.dest('./_upload_files/mock'));
-	
-	return merge(buildMockPc, buildMockSp);
-});
-
-// stgに関するタスク
-gulp.task('build-stg', function(){
-	var buildStgPc = gulp.src('./base_files/template_ejs/template_stg_pc.ejs')
-	.pipe(ejs({
-		jsonData: jsonData //jsonData に data.json を取り込む
-	}))
-	.pipe(rename("pc.html"))
-	.pipe(gulp.dest('./_upload_files/stg'));
-	
-	var buildStgSp = gulp.src('./base_files/template_ejs/template_stg_sp.ejs')
-	.pipe(ejs({
-		jsonData: jsonData //jsonData に data.json を取り込む
-	}))
-	.pipe(rename("sp.html"))
-	.pipe(gulp.dest('./_upload_files/stg'));
-	
-	return merge(buildStgPc, buildStgSp);
-});
-
 // viewに関するタスク
-gulp.task('build-view', function(){
-	var buildViewPc = gulp.src('./base_files/template_ejs/template_view_pc.ejs')
+gulp.task('build-html', function(){
+	var buildView = gulp.src('./_dev_files/parts_ejs/*.ejs')
 	.pipe(ejs({
-		jsonData: jsonData //jsonData に data.json を取り込む
+		jsonData: jsonData, //jsonData に data.json を取り込む
+		fileKind: 'view'
 	}))
-	.pipe(rename("pc.html"))
+	.pipe(rename({extname: '.html'}))
 	.pipe(gulp.dest('./view_files'));
 	
-	var buildViewSp = gulp.src('./base_files/template_ejs/template_view_sp.ejs')
+	var buildMock = gulp.src('./_dev_files/parts_ejs/*.ejs')
 	.pipe(ejs({
-		jsonData: jsonData //jsonData に data.json を取り込む
+		jsonData: jsonData, //jsonData に data.json を取り込む
+		fileKind: 'mock'
 	}))
-	.pipe(rename("sp.html"))
-	.pipe(gulp.dest('./view_files'));
+	.pipe(rename({extname: '.html'}))
+	.pipe(gulp.dest('./_upfiles/mock'));
 	
-	return merge(buildViewPc, buildViewSp);
+	var buildStg = gulp.src('./_dev_files/parts_ejs/*.ejs')
+	.pipe(ejs({
+		jsonData: jsonData, //jsonData に data.json を取り込む
+		fileKind: 'stg'
+	}))
+	.pipe(rename({extname: '.html'}))
+	.pipe(gulp.dest('./_upfiles/stg'));
+	
+	return merge(buildView, buildMock, buildStg);
+	
 });
 
 // cssに関するタスク
@@ -94,9 +67,8 @@ gulp.task('bs-reload', function () {
 
 // ファイルの変更を監視
 gulp.task('watch', function() {
-	gulp.watch(['./_dev_files/scss/*.scss','./base_files/css/*.css'], ['build-css','build-mock','build-stg','build-view','bs-reload'])
-	gulp.watch(['./_dev_files/parts_ejs/*.ejs'], ['build-mock','build-stg','build-view','bs-reload'])
+	gulp.watch(['./_dev_files/parts_ejs/*.ejs','./_dev_files/scss/*.scss','./base_files/css/*.css'], ['build-css','build-html','bs-reload'])
 });
 
 // デフォルトタスク
-gulp.task('default', ['build-css','build-mock','build-stg','watch','browser-sync']);
+gulp.task('default', ['build-css','build-html','watch','browser-sync']);
