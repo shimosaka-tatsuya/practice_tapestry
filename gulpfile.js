@@ -7,13 +7,13 @@ var autoprefixer =require('gulp-autoprefixer');
 var ejs = require("gulp-ejs");
 var merge = require('merge-stream');
 
-var jsonData = require('./_dev_files/json/index.json');
+var meta = require('./_dev_files/meta/meta.json');
 
-// viewに関するタスク
+// htmlに関するタスク
 gulp.task('build-html', function(){
 	var buildView = gulp.src('./_dev_files/parts_ejs/*.ejs')
 	.pipe(ejs({
-		jsonData: jsonData, //jsonData に data.json を取り込む
+		meta: meta, //meta に data.json を取り込む
 		fileKind: 'view'
 	}))
 	.pipe(rename({extname: '.html'}))
@@ -21,7 +21,7 @@ gulp.task('build-html', function(){
 	
 	var buildMock = gulp.src('./_dev_files/parts_ejs/*.ejs')
 	.pipe(ejs({
-		jsonData: jsonData, //jsonData に data.json を取り込む
+		meta: meta, //meta に data.json を取り込む
 		fileKind: 'mock'
 	}))
 	.pipe(rename({extname: '.html'}))
@@ -29,7 +29,7 @@ gulp.task('build-html', function(){
 	
 	var buildStg = gulp.src('./_dev_files/parts_ejs/*.ejs')
 	.pipe(ejs({
-		jsonData: jsonData, //jsonData に data.json を取り込む
+		meta: meta, //meta に data.json を取り込む
 		fileKind: 'stg'
 	}))
 	.pipe(rename({extname: '.html'}))
