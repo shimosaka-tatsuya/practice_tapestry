@@ -113,12 +113,12 @@ body {
   .bx-main .tx-shadow {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    -webkit-animation-duration: .6s;
+    animation-duration: .6s;
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
+    -webkit-animation-delay: 1.4s;
+    animation-delay: 1.4s;
     -webkit-animation-fill-mode: backwards;
     animation-fill-mode: backwards; }
   .bx-main .tx-main-visual {
