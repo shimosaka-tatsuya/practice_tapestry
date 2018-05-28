@@ -1,8 +1,173 @@
-.bx-text {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 20px;
-  font-weight: bold; }
-  .bx-text:hover {
-    opacity: .5; }
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: 700; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+body {
+  background-color: pink; }
+
+@-webkit-keyframes fadeInMainText {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-30px);
+    transform: translateX(-30px);
+    -webkit-mask-size: 0 551px;
+    mask-size: 0 551px; }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-mask-size: 838px 551px;
+    mask-size: 838px 551px; } }
+
+@keyframes fadeInMainText {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-30px);
+    transform: translateX(-30px);
+    -webkit-mask-size: 0 551px;
+    mask-size: 0 551px; }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-mask-size: 838px 551px;
+    mask-size: 838px 551px; } }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.bx-main {
+  position: relative;
+  width: 838px;
+  margin: 60px auto 0; }
+  .bx-main .tx-shadow {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards; }
+  .bx-main .tx-main-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-mask-image: url("https://placehold.jp/838x551.png");
+    mask-image: url("https://placehold.jp/838x551.png");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 838px 611px;
+    mask-size: 838px 611px;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+    -webkit-animation-name: fadeInMainText;
+    animation-name: fadeInMainText;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards; }
+    .bx-main .tx-main-visual--3 {
+      -webkit-animation-delay: .3s;
+      animation-delay: .3s; }
+    .bx-main .tx-main-visual--year {
+      -webkit-animation-delay: .4s;
+      animation-delay: .4s; }
+    .bx-main .tx-main-visual--fair {
+      -webkit-animation-delay: .5s;
+      animation-delay: .5s; }
+  .bx-main .ico-main-visual {
+    position: absolute;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-delay: .9s;
+    animation-delay: .9s;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards; }
+    .bx-main .ico-main-visual--3years {
+      top: -60px;
+      left: 273px; }
+    .bx-main .ico-main-visual--sokan {
+      top: -75px;
+      left: 0; }
+    .bx-main .ico-main-visual--kodansya {
+      top: 25px;
+      left: 450px; }
