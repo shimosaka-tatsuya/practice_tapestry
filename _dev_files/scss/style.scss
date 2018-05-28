@@ -1,9 +1,91 @@
-.bx-text {
-	display: flex;
-	font-size: 20px;
-	font-weight: bold;
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:700}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+body {
+	background-color: pink;
+}
+
+@keyframes fadeInMainText {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+        mask-size: 0 551px;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        mask-size: 838px 551px;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bx-main {
+	position: relative;
+	width: 838px;
+	margin: 60px auto 0;
 	
-	&:hover {
-		opacity: .5;
+	.tx-shadow {
+		animation-name: fadeIn;
+		animation-duration: 1s;
+		animation-timing-function: ease-in-out;
+		animation-delay: 1s;
+		animation-fill-mode: backwards;
+	}
+	
+	.tx-main-visual {
+		position: absolute;
+		top: 0;
+		left: 0;
+		mask-image: url('https://placehold.jp/838x551.png');
+	    mask-repeat: no-repeat;
+	    mask-size: 838px 611px;
+	    mask-position: 0 0;
+	    animation-name: fadeInMainText;
+		animation-duration: .3s;
+		animation-timing-function: ease-in-out;
+		animation-fill-mode: backwards;
+		
+		&--3 {
+			animation-delay: .3s;
+		}
+		
+		&--year {
+			animation-delay: .4s;
+		}
+		
+		&--fair {
+			animation-delay: .5s;
+		}
+	}
+	
+	.ico-main-visual {
+		position: absolute;
+		animation-name: fadeIn;
+		animation-duration: .4s;
+		animation-timing-function: ease-in-out;
+		animation-delay: .9s;
+		animation-fill-mode: backwards;
+	
+		&--3years {
+			top: -60px;
+		    left: 273px;
+		}
+		
+		&--sokan {
+		    top: -75px;
+		    left: 0;
+		}
+		
+		&--kodansya {
+			top: 25px;
+		    left: 450px;
+		}
 	}
 }
