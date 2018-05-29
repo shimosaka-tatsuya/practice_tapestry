@@ -1,0 +1,13 @@
+<%
+var meta = meta;
+var fileKind = fileKind;
+%>
+<% if (fileKind === 'view'){ %><%- include('../../base_files/parts_view/top.ejs') %><% } else if (fileKind === 'mock'){ %>mockのtop<% } else if (fileKind === 'stg'){ %>stgのtop<% } %>
+
+<% /* コンテンツはここから */ %>
+
+<div class="kami"></div>
+
+<% /* コンテンツはここまで */ %>
+
+<% if (fileKind === 'view'){ %><%- include('../../base_files/parts_view/bottom.ejs') %><% } else if (fileKind === 'mock'){ %>mockのbottom<% } else if (fileKind === 'stg'){ %>stgのbottom<% } %>
