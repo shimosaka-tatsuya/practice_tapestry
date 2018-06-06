@@ -1,142 +1,243 @@
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;fontsize:100%;verticalalign:baseline;background:transparent}body{lineheight:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{liststyle:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}a{margin:0;padding:0;fontsize:100%;verticalalign:baseline;background:transparent}ins{backgroundcolor:#ff9;color:#000;textdecoration:none}mark{backgroundcolor:#ff9;color:#000;fontstyle:italic;fontweight:700}del{textdecoration:linethrough}abbr[title],dfn[title]{borderbottom:1px dotted;cursor:help}table{bordercollapse:collapse;borderspacing:0}hr{display:block;height:1px;border:0;bordertop:1px solid #ccc;margin:1em 0;padding:0}input,select{verticalalign:middle}
 
-body {
-	backgroundcolor: pink;
-}
-
-@keyframes fadeInMainText {
-    0% {
-        opacity: 0;
-        transform: translateX(30px);
-        masksize: 0 551px;
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-        masksize: 838px 551px;
-    }
-}
-
-
-@keyframes fall {
-  from {
-    transform: translateX(0) translateY(0) skew(10deg);
-    opacity: .875;
-  }
-  12.5% {
-    transform: translateX(12px) translateY(75px) skew(4deg) rotateZ(0deg);
-    opacity: .625;
-  }
-  37.5% {
-    transform: translateX(17px) translateY(225px) skew(6deg) rotateZ(20deg);
-    opacity: .5
-  }
-  50% {
-    transform: translateX(8px) translateY(300px) skew(2deg) rotateZ(4deg);
-    opacity: .125;
-  }
-  62.5% {
-    transform: translateX(4px) translateY(375px) skew(8deg) rotateZ(8deg);
-    opacity: .375;
-  }
-  87.5% {
-    transform: translateX(2px) translateY(525px) skew(0deg) rotateZ(12deg);
-    opacity: .125;
-  }
-  to {
-    transform: translateX(6px) translateY(600px) skew(2deg) rotateZ(0deg);
-    opacity: 0;
-  }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.bxmain {
-	width: 838px;
-	margin: 60px auto 0;
-	
-	.txshadow {
-		animationname: fadeIn;
-		animationduration: .6s;
-		animationtimingfunction: easeinout;
-		animationdelay: 1.4s;
-		animationfillmode: backwards;
-	}
-	
-	.txmainvisual {
-		position: absolute;
-		top: 0;
-		left: 0;
-		maskimage: url('https://placehold.jp/838x551.png');
-	    maskrepeat: norepeat;
-	    masksize: 838px 611px;
-	    maskposition: 0 0;
-	    animationname: fadeInMainText;
-		animationduration: .3s;
-		animationtimingfunction: easeinout;
-		animationfillmode: backwards;
-		
-		&3 {
-			animationdelay: .3s;
-		}
-		
-		&year {
-			animationdelay: .4s;
-		}
-		
-		&fair {
-			animationdelay: .5s;
-		}
-	}
-	
-	.icomainvisual {
-		position: absolute;
-		animationname: fadeIn;
-		animationduration: .4s;
-		animationtimingfunction: easeinout;
-		animationdelay: .9s;
-		animationfillmode: backwards;
-	
-		&3years {
-			top: 60px;
-		    left: 273px;
-		}
-		
-		&sokan {
-		    top: 75px;
-		    left: 0;
-		}
-		
-		&kodansya {
-			top: 25px;
-		    left: 450px;
-		}
-	}
-}
-
-
-html,
-body {
-	width: 960px;
-	height: 500px;
+.bx-flower-object {
+	width: 836px;
+	margin: 0 auto;
 	position: relative;
+	z-index: -1;
+	
+	@keyframes dropFlowerObject1 {
+		0% {
+			opacity: .9;
+			transform: translate(0, 0);
+		}
+		25% {
+			opacity: .65;
+			transform: translate(18px, 100px);
+		}
+		50% {
+			opacity: .4;
+			transform: translate(30px, 200px);
+		}
+		75% {
+			opacity: .15;
+			transform: translate(-6px, 300px);
+		}
+		100% {
+			opacity: 0;
+			transform: translate(0, 400px);
+		}
+	}
+	
+	@keyframes dropFlowerObject2 {
+		0% {
+			opacity: .9;
+			transform: translate(0, 0);
+		}
+		25% {
+			opacity: .65;
+			transform: translate(-18px, 100px);
+		}
+		50% {
+			opacity: .4;
+			transform: translate(-30px, 200px);
+		}
+		75% {
+			opacity: .15;
+			transform: translate(6px, 300px);
+		}
+		100% {
+			opacity: 0;
+			transform: translate(0, 400px);
+		}
+	}
+	
+	@keyframes dropFlowerObject3 {
+		0% {
+			opacity: .9;
+			transform: translate(0, 0);
+		}
+		25% {
+			opacity: .65;
+			transform: translate(-9px, 100px);
+		}
+		50% {
+			opacity: .4;
+			transform: translate(-15px, 200px);
+		}
+		75% {
+			opacity: .15;
+			transform: translate(3px, 300px);
+		}
+		100% {
+			opacity: 0;
+			transform: translate(0, 400px);
+		}
+	}
+	
+	.itm-flower-object {
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		background-color: red;
+		animation-timing-function: linear;
+		animation-fill-mode: both;
+		animation-iteration-count: infinite;
+		
+		&:nth-child(1) {
+			top: 150px;
+			left: 40px;
+			animation-name: dropFlowerObject1;
+			animation-duration: 30s;
+		}
+		
+		&:nth-child(2) {
+			top: 130px;
+			right: 20px;
+			animation-name: dropFlowerObject2;
+			animation-duration: 27s;
+		}
+		
+		&:nth-child(3) {
+			top: 100px;
+			left: 200px;
+			animation-name: dropFlowerObject3;
+			animation-duration: 25s;
+		}
+		
+		&:nth-child(4) {
+			top: 70px;
+			left: 280px;
+			animation-name: dropFlowerObject3;
+			animation-duration: 30s;
+		}
+		
+		&:nth-child(5) {
+			top: 40px;
+			right: 90px;
+			animation-name: dropFlowerObject2;
+			animation-duration: 27s;
+		}
+		
+		&:nth-child(6) {
+			top: 20px;
+			left: 220px;
+			animation-name: dropFlowerObject1;
+			animation-duration: 25s;
+		}
+	}	
 }
-.kami {
-	position: absolute;
-	width: 10px;
-	height: 10px;
-	opacity: 0.8;
-	backgroundcolor: #fff;
-	animationname: fall;
-	animationduration: 25s;
-	animationtimingfunction: linear;
-	animationiterationcount: infinite;
-	animationfillmode: backwards;
+
+.bx-item-visual {
+	width: 836px;
+	margin: 0 auto;
+	position: relative;
+	
+	.img-item-visual  {
+		position: absolute;
+	}
+	
+	@keyframes fade-in-bavel {
+		0% {
+			opacity: 0;
+			transform: scale(.6) rotateZ(15deg);
+			box-shadow: 0 2px 4px 0 #797979;
+		}
+		85% {
+			opacity: 1;
+			transform: scale(1.2) rotateZ(-37deg);
+			box-shadow: 0 8px 16px 0 #aeaeae;
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1) rotateZ(-24deg);
+			box-shadow: 0 2px 4px 0 #797979;
+		}
+	} 
+	
+	.img-bavel {
+		top: 280px;
+		left: 120px;
+		transform-origin: bottom left;
+		animation-name: fade-in-bavel;
+		animation-delay: .12s;
+		animation-duration: .35s;
+		animation-fill-mode: both;
+	}
+	
+	@keyframes fade-in-tapestry {
+		0% {
+			opacity: 0;
+			transform: scale(.6) rotateZ(-15deg);
+			box-shadow: 0 2px 4px 0 #797979;
+		}
+		85% {
+			opacity: 1;
+			transform: scale(1.2) rotateZ(38deg);
+			box-shadow: 0px 8px 16px 0 #aeaeae;
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1) rotateZ(22deg);
+			box-shadow: 0 2px 4px 0 #797979;
+		}
+	}
+	
+	.img-tapestry {
+		top: 210px;
+		right: 160px;
+		transform-origin: bottom right;
+		animation-name: fade-in-tapestry;
+		animation-duration: .35s;
+		animation-fill-mode: both;
+	}
+	
+	@keyframes fade-in-ordermade {
+		0% {
+			opacity: 0;
+			transform: scale(.6) rotateZ(22deg);
+		}
+		85% {
+			opacity: 1;
+			transform: scale(1.1) rotateZ(30deg);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1) rotateZ(22deg);
+		}
+	}
+	
+	.tx-item-ordermade {
+		top: 60px;
+		right: -40px;
+		animation-name: fade-in-ordermade;
+		animation-delay: .24s;
+		animation-duration: .35s;
+		animation-fill-mode: both;
+	}
+	
+	@keyframes fade-in-name {
+		0% {
+			opacity: 0;
+			transform: scale(.6) rotateZ(22deg);
+		}
+		80% {
+			opacity: 1;
+			transform: scale(1.1) rotateZ(22deg);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1) rotateZ(22deg);
+		}
+	}
+	
+	.tx-item-name {
+		top: 460px;
+		right: 120px;
+		transform-origin: bottom right;
+		animation-name: fade-in-name;
+		animation-delay: .34s;
+		animation-duration: .35s;
+		animation-fill-mode: both;
+	}
 }
