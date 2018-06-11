@@ -18,7 +18,7 @@ var meta = require('./_dev_files/meta/meta.json');
 
 // htmlに関するタスク
 gulp.task('build-html', function(){
-	var buildView = gulp.src('./_dev_files/parts_ejs/*.ejs')
+	var buildView = gulp.src('./_dev_files/**/*.ejs')
 	.pipe(ejs({
 		meta: meta, //meta に data.json を取り込む
 		fileKind: 'view'
@@ -26,7 +26,7 @@ gulp.task('build-html', function(){
 	.pipe(rename({extname: '.html'}))
 	.pipe(gulp.dest('./view_files'));
 	
-	var buildMock = gulp.src('./_dev_files/parts_ejs/*.ejs')
+	var buildMock = gulp.src('./_dev_files/**/*.ejs')
 	.pipe(ejs({
 		meta: meta, //meta に data.json を取り込む
 		fileKind: 'mock'
@@ -34,7 +34,7 @@ gulp.task('build-html', function(){
 	.pipe(rename({extname: '.html'}))
 	.pipe(gulp.dest('./_upfiles/mock'));
 	
-	var buildStg = gulp.src('./_dev_files/parts_ejs/*.ejs')
+	var buildStg = gulp.src('./_dev_files/**/*.ejs')
 	.pipe(ejs({
 		meta: meta, //meta に data.json を取り込む
 		fileKind: 'stg'
@@ -48,7 +48,7 @@ gulp.task('build-html', function(){
 
 // cssに関するタスク
 gulp.task('build-css', function () {
-	gulp.src('./_dev_files/scss/*.scss')
+	gulp.src('./_dev_files/**/*.scss')
 	.pipe(sass({outputStyle: 'nested'}))
 	.pipe(rename({extname: '.css'}))
 	.pipe(autoprefixer({  //autoprefixerの実行
